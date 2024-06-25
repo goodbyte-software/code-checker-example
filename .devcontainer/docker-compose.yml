@@ -1,0 +1,36 @@
+version: "3.9"
+
+x-common_args: &common_args
+  REPO_NAME: ${REPO_NAME}
+  USER_NAME: ${USER_NAME}
+  USER_PASSWORD: ${USER_PASSWORD}
+
+services:
+  dev_container:
+    image: dev_${REPO_NAME}
+    build:
+      dockerfile: Dockerfile
+      context: .
+      network: host
+      args:
+        <<: *common_args
+    environment:
+      DISPLAY: ${DISPLAY:-:0}
+      LC_ALL: C
+    init: true
+    stdin_open: true
+    privileged: true
+    tty: true
+    user: ${USER_NAME}
+    entrypoint: ["/bin/bash"]
+    working_dir: /repos/${REPO_NAME}
+    network_mode: host
+    volumes:
+      - /dev/bus/usb/:/dev/bus/usb
+      - ../:/repos/${REPO_NAME}
+      # vscode extensions
+      - home:/home/${USER_NAME}
+  
+volumes:
+  home:
+    name: home_${REPO_NAME}

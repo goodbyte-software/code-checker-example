@@ -1,0 +1,10 @@
+# VS Code
+.vscode
+
+# Build
+build
+
+# West direcotories
+.west
+modules
+zephyr

@@ -1,0 +1,15 @@
+{
+	"dockerComposeFile": ["./docker-compose.yml"],
+	"service": "dev_container",
+	"workspaceFolder": "/repos/${localWorkspaceFolderBasename}",
+	// Try to exec docker container as a root to chown .vscode-server to user
+	// or use rootless mode
+	"shutdownAction": "stopCompose",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"codechecker.vscode-codechecker"
+			]
+		}
+	}
+}
