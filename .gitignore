@@ -1,6 +1,9 @@
 # VS Code
 .vscode
 
+# Code Checker
+.codechecker
+
 # Build
 build
 

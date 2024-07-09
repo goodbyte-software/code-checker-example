@@ -22,7 +22,7 @@ services:
     privileged: true
     tty: true
     user: ${USER_NAME}
-    entrypoint: ["/bin/bash"]
+    entrypoint: ["/usr/bin/bash"]
     working_dir: /repos/${REPO_NAME}
     network_mode: host
     volumes:

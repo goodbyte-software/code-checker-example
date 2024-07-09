@@ -66,7 +66,8 @@ RUN wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.8/
     && rm zephyr-sdk-0.16.8_linux-x86_64.tar.xz
 
 # Install clang-tidy
-RUN apt install clang-tidy
+RUN apt install -y clang-tidy && \
+    ln -sf /usr/bin/clang-apply-replacements-14 /usr/bin/clang-apply-replacements
 
 RUN usermod -aG sudo ${USER}
 USER ${UID}:${GID}
